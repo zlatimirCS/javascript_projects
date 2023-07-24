@@ -27,6 +27,7 @@ root.innerHTML = `
 const input = document.querySelector('input');
 const dropdown = document.querySelector('.dropdown');
 const resultsWrapper = document.querySelector('.results');
+const dropdownItems = document.querySelectorAll('.dropdown-item');
 
 const onInput = async (event) => {
     const movies = await fetchData(event.target.value);
@@ -48,6 +49,10 @@ const onInput = async (event) => {
         <img src="${imgSRC}" />
         ${movie.Title}
       `;
+      option.addEventListener('click', () => {
+        dropdown.classList.remove('is-active');
+        input.value = movie.Title;
+      });
       resultsWrapper.appendChild(option);
     }
 }
