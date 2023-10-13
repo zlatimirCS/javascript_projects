@@ -26,7 +26,6 @@ const SearchBar = () => {
   const router = useRouter();
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("searching...");
     if (manufacturer === "" || model === "") {
       return;
     }
