@@ -3,14 +3,19 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import postRoutes from "./routes/posts.js";
+
 const app = express();
+
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
+app.use("/posts", postRoutes);
+
 //mongodb+srv://<username>:<password>@cluster0.jmtwni8.mongodb.net/
 const CONNECTION_URL =
-  "mongodb+srv://zlatimir_rk:t9rMOXUP7eQDXMeT@cluster0.jmtwni8.mongodb.net/";
+  "mongodb+srv://zlatimir_rk:t9rMOXUP7eQDXMeT@cluster0.jmtwni8.mongodb.net/memories_app_database";
 const PORT = process.env.PORT || 5000;
 
 mongoose
