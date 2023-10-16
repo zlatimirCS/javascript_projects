@@ -65,3 +65,41 @@ const CONNECTION_URL =
 in this case collection will be called memories_app_database
 
 creating form in client folder to be able to create post and send it to server and post it to database
+create structure with MUI components
+
+create api folder inside client folder
+
+import axios from "axios";
+const url = "http://localhost:5000/posts";
+export const fetchPosts = () => axios.get(url);
+and we can use fetchPosts function in App.js to fetch all the posts from database
+
+prepare our application to use redux
+inside src folder we create folders actions, reducers, store
+
+we need to go to index.js in src folder and wrap App component with Provider component - to initialize redux store
+
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import reducers from "./reducers";
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
+
+in reducers we create index.js where we use combineReducers to combine all reducers
+after that we create individual reducers for posts and posts will have initialState
+
+example of posts reducer
+export default (posts = [], action) => {
+switch (action.type) {
+case "FETCH_ALL":
+return posts;
+case "CREATE":
+return posts;
+default:
+break;
+}
+};
+
+now that we have reducers we can wrap App component with Provider component in index.js in src folder
+now our application is successfully connected to redux store
