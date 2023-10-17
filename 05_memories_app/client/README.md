@@ -138,3 +138,8 @@ const posts = useSelector((state) => state.posts);
 additionaly add "proxy": "http://localhost:5000/", to the package json below private
 now we get [] of posts in console
 here setup is done
+
+now we need to create form to create post
+in the form we also want to handle image upload
+for that we use
+import FileBase from "react-file-base64";
