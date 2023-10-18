@@ -13,9 +13,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
 import memoriespic from "../../../assets/images/memories.png";
+import { useDispatch } from "react-redux";
+import { deletePost } from "../../../actions/posts";
 
 const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   return (
     <Card className={classes.card}>
       {post.selectedFile ? (
@@ -57,7 +60,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
         {post.title}
       </Typography>
       <CardContent>
-        <Typography variant="p" gutterBottom>
+        <Typography variant="subtitle2" gutterBottom>
           {post.message}
         </Typography>
       </CardContent>
@@ -67,7 +70,13 @@ const Post = ({ post, currentId, setCurrentId }) => {
           Like&nbsp;
           {post.likeCount}
         </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(deletePost(post._id));
+          }}
+        >
           <DeleteIcon fontSize="small" />
           Delete
         </Button>
