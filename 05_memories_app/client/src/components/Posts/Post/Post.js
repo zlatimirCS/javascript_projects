@@ -15,10 +15,13 @@ import moment from "moment";
 import memoriespic from "../../../assets/images/memories.png";
 import { useDispatch } from "react-redux";
 import { deletePost, likePost } from "../../../actions/posts";
+import { useTheme } from "@material-ui/core";
 
 const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const theme = useTheme();
+  console.log("theme", theme);
   console.log(post);
   return (
     <Card className={classes.card}>
@@ -35,7 +38,10 @@ const Post = ({ post, currentId, setCurrentId }) => {
           title={post.title}
         />
       )}
-      <div className={classes.overlay}>
+      <div
+        className={classes.overlay}
+        style={{ backgroundColor: theme.palette.tertiary.main }}
+      >
         <Typography variant="h6">{post.creator}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
@@ -79,10 +85,10 @@ const Post = ({ post, currentId, setCurrentId }) => {
         </Button>
         <Button
           size="small"
-          color="primary"
           onClick={() => {
             dispatch(deletePost(post._id));
           }}
+          style={{ color: theme.palette.tertiary.main }}
         >
           <DeleteIcon fontSize="small" />
           Delete
