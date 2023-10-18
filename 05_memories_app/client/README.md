@@ -101,45 +101,56 @@ break;<br/>
 }<br/>
 };<br/>
 
-now that we have reducers we can wrap App component with Provider component in index.js in src folder
-now our application is successfully connected to redux store
+now that we have reducers we can wrap App component with Provider component in index.js in src folder<br/>
+now our application is successfully connected to redux store<br/>
 
-now in App.js we need to dispatch action to fetch all the posts from database
-import { useDispatch } from "react-redux";
-const dispatch = useDispatch();
+now in App.js we need to dispatch action to fetch all the posts from database<br/>
+import { useDispatch } from "react-redux";<br/>
+const dispatch = useDispatch();<br/>
 
-inside of actions
-import \* as api from "../api";
-// Action Creators
-const getPosts = () => async (dispatch) => {
-try {
-const { data } = await api.fetchPosts();
-dispatch({ type: "FETCH_ALL", payload: data });
-} catch (error) {
-console.log(error);
-}
-};
+inside of actions<br/>
+import \* as api from "../api";<br/>
+// Action Creators<br/>
+const getPosts = () => async (dispatch) => {<br/>
+try {<br/>
+const { data } = await api.fetchPosts();<br/>
+dispatch({ type: "FETCH_ALL", payload: data });<br/>
+} catch (error) {<br/>
+console.log(error);<br/>
+}<br/>
+};<br/>
 
-export default (posts = [], action) => {
-switch (action.type) {
-case "FETCH_ALL":
-return action.payload;
-case "CREATE":
-return posts;
-default:
-return posts;
-}
-};
+export default (posts = [], action) => {<br/>
+switch (action.type) {<br/>
+case "FETCH_ALL":<br/>
+return action.payload;<br/>
+case "CREATE":<br/>
+return posts;<br/>
+default:<br/>
+return posts;<br/>
+}<br/>
+};<br/>
 
-now we need to consume our store in files where we need to use it
-import { useSelector } from "react-redux";
-const posts = useSelector((state) => state.posts);
+now we need to consume our store in files where we need to use it<br/>
+import { useSelector } from "react-redux";<br/>
+const posts = useSelector((state) => state.posts);<br/>
 
-additionaly add "proxy": "http://localhost:5000/", to the package json below private
-now we get [] of posts in console
-here setup is done
+additionaly add "proxy": "http://localhost:5000/", to the package json below private<br/>
+now we get [] of posts in console<br/>
+here setup is done<br/>
 
-now we need to create form to create post
-in the form we also want to handle image upload
-for that we use
-import FileBase from "react-file-base64";
+now we need to create form to create post<br/>
+in the form we also want to handle image upload<br/>
+for that we use<br/>
+import FileBase from "react-file-base64";<br/>
+
+we need to create routes for creating post, update post, delete post, like post<br/>
+first we create route in server - routes/posts.js<br/>
+router.post("/", createPost);<br/>
+then we create controller in server - controllers/posts.js<br/>
+after we need to create action in client - actions/posts.js<br/>
+actions consume api from api folder<br/>
+after that we need to create reducer in client - reducers/posts.js<br/>
+after that we need to consume reducer in App.js - import { useDispatch } from "react-redux";<br/>
+const dispatch = useDispatch();<br/>
+and dispatch action on proper place<br/>

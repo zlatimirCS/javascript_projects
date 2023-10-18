@@ -20,8 +20,6 @@ const Form = ({ currentId, setCurrentId }) => {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
 
-  console.log("current", currentId);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
