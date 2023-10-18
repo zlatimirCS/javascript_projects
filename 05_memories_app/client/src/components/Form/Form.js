@@ -13,7 +13,7 @@ const Form = ({ currentId, setCurrentId }) => {
     creator: "",
     title: "",
     message: "",
-    tags: "",
+    tags: [],
     selectedFile: "",
   });
   const post = useSelector((state) =>
@@ -31,7 +31,11 @@ const Form = ({ currentId, setCurrentId }) => {
     clear();
   };
   const handleChange = (e) => {
-    setPostData({ ...postData, [e.target.name]: e.target.value });
+    if (e.target.name === "tags") {
+      setPostData({ ...postData, tags: e.target.value.split(",") });
+    } else {
+      setPostData({ ...postData, [e.target.name]: e.target.value });
+    }
   };
   const clear = () => {
     setCurrentId(null);
@@ -39,10 +43,11 @@ const Form = ({ currentId, setCurrentId }) => {
       creator: "",
       title: "",
       message: "",
-      tags: "",
+      tags: [],
       selectedFile: "",
     }); // This will clear the form
   };
+  console.log("post data", postData);
 
   useEffect(() => {
     if (post) setPostData(post);

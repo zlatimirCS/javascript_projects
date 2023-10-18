@@ -19,6 +19,7 @@ import { deletePost, likePost } from "../../../actions/posts";
 const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  console.log(post);
   return (
     <Card className={classes.card}>
       {post.selectedFile ? (
@@ -60,7 +61,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
         {post.title}
       </Typography>
       <CardContent>
-        <Typography variant="subtitle2" gutterBottom>
+        <Typography variant="body2" color="textSecondary" gutterBottom>
           {post.message}
         </Typography>
       </CardContent>
