@@ -40,8 +40,8 @@ export const deletePost = (id) => async (dispatch) => {
 export const likePost = (id) => async (dispatch) => {
   try {
     // We don't need the response data, so we don't need to destructure it
-    await api.likePost(id);
-    dispatch({ type: "LIKE", payload: id });
+    const { data } = await api.likePost(id);
+    dispatch({ type: "LIKE", payload: data });
   } catch (error) {
     console.log(error.message);
   }
