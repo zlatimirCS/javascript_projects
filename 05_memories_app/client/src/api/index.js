@@ -10,3 +10,5 @@ export const updatePost = (id, updatedPost) =>
   axios.patch(`${url}/${id}`, updatedPost); // patch is used for updating existing documents
 
 export const deletePost = (id) => axios.delete(`${url}/${id}`);
+
+export const likePost = (id) => axios.patch(`${url}/likePost/${id}`);
