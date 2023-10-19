@@ -157,9 +157,7 @@ and dispatch action on proper place<br/>
 
 in order to makeStyles for for example App.js we create styles.js and do it like this<br/>
 import { makeStyles } from "@material-ui/core/styles";<br/>
-import { createTheme } from "@material-ui/core/styles";<br/>
-const theme = createTheme();<br/>
-export default makeStyles(() => ({<br/>
+export default makeStyles((theme) => ({<br/>
 appBar: {<br/>
 borderRadius: 15,<br/>
 margin: "30px 0",<br/>
@@ -198,3 +196,7 @@ main: "#97f200",<br/>
 },<br/>
 });<br/>
 <ThemeProvider theme={theme}><br/>
+
+we need to install dotenv in order to use environment variables from .env file<br/>
+import dotenv from "dotenv";<br/>
+dotenv.config();<br/>

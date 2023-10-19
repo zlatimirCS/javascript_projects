@@ -2,10 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
-
+import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 
 const app = express();
+dotenv.config();
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -16,7 +17,7 @@ app.use("/posts", postRoutes);
 //mongodb+srv://<username>:<password>@cluster0.jmtwni8.mongodb.net/
 const CONNECTION_URL =
   "mongodb+srv://zlatimir_rk:t9rMOXUP7eQDXMeT@cluster0.jmtwni8.mongodb.net/memories_app_database";
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 mongoose
   .connect(CONNECTION_URL, {
