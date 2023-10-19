@@ -200,3 +200,9 @@ main: "#97f200",<br/>
 we need to install dotenv in order to use environment variables from .env file<br/>
 import dotenv from "dotenv";<br/>
 dotenv.config();<br/>
+
+to be able to use Link component from react-router-dom we need to wrap up our App with BrowserRouter<br/>
+
+added Browser Router to App.js<br/>
+added routes for Home and Auth<br/>
+continue with Auth component<br/>
