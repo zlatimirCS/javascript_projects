@@ -21,8 +21,6 @@ const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const theme = useTheme();
-  console.log("theme", theme);
-  console.log(post);
   return (
     <Card className={classes.card}>
       {post.selectedFile ? (

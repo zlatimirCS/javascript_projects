@@ -1,4 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
+const theme = createTheme();
 
 export default makeStyles(() => ({
   appBar: {
@@ -14,5 +16,10 @@ export default makeStyles(() => ({
   },
   image: {
     marginLeft: "15px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    mainContainer: {
+      backgroundColor: "#ff0000",
+    },
   },
 }));

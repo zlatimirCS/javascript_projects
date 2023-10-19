@@ -47,7 +47,6 @@ const Form = ({ currentId, setCurrentId }) => {
       selectedFile: "",
     }); // This will clear the form
   };
-  console.log("post data", postData);
 
   useEffect(() => {
     if (post) setPostData(post);

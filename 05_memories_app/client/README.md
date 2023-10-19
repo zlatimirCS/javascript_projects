@@ -154,3 +154,47 @@ after that we need to create reducer in client - reducers/posts.js<br/>
 after that we need to consume reducer in App.js - import { useDispatch } from "react-redux";<br/>
 const dispatch = useDispatch();<br/>
 and dispatch action on proper place<br/>
+
+in order to makeStyles for for example App.js we create styles.js and do it like this<br/>
+import { makeStyles } from "@material-ui/core/styles";<br/>
+import { createTheme } from "@material-ui/core/styles";<br/>
+const theme = createTheme();<br/>
+export default makeStyles(() => ({<br/>
+appBar: {<br/>
+borderRadius: 15,<br/>
+margin: "30px 0",<br/>
+display: "flex",<br/>
+flexDirection: "row",<br/>
+justifyContent: "center",<br/>
+alignItems: "center",<br/>
+},<br/>
+heading: {<br/>
+color: "rgba(0,183,255, 1)",<br/>
+},<br/>
+image: {<br/>
+marginLeft: "15px",<br/>
+},<br/>
+[theme.breakpoints.down("sm")]: {<br/>
+mainContainer: {<br/>
+backgroundColor: "#ff0000",<br/>
+},<br/>
+},<br/>
+));<br/>
+
+in order to create theme globaly we need to wrap up our App with theme provider<br/>
+import { createTheme } from "@material-ui/core/styles";<br/>
+import { ThemeProvider } from "@material-ui/styles";<br/>
+const theme = createTheme({<br/>
+palette: {<br/>
+primary: {<br/>
+main: "#2e7d32",<br/>
+},<br/>
+secondary: {<br/>
+main: "#ff6f00",<br/>
+},<br/>
+tertiary: {<br/>
+main: "#97f200",<br/>
+},<br/>
+},<br/>
+});<br/>
+<ThemeProvider theme={theme}><br/>
