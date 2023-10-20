@@ -206,3 +206,4 @@ to be able to use Link component from react-router-dom we need to wrap up our Ap
 added Browser Router to App.js<br/>
 added routes for Home and Auth<br/>
 continue with Auth component<br/>
+create both sign in and sign up forms in the same component by using isSignup variable from true to false<br/>
