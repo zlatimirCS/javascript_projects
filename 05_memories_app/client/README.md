@@ -207,3 +207,31 @@ added Browser Router to App.js<br/>
 added routes for Home and Auth<br/>
 continue with Auth component<br/>
 create both sign in and sign up forms in the same component by using isSignup variable from true to false<br/>
+
+Google Login<br/>
+npm install react-google-login<br/>
+import GoogleLogin from "react-google-login";<br/>
+<GoogleLogin<br/>
+clientId="GOOGLE ID"<br/>
+render={(renderProps) => {<br/>
+<Button<br/>
+className={classes.googleButton}<br/>
+color="primary"<br/>
+fullWidth<br/>
+onClick={renderProps.onClick}<br/>
+disabled={renderProps.disabled}<br/>
+variant="contained"<br/> ><br/>
+Google Sign In<br/>
+</Button>;<br/>
+}}<br/>
+onSuccess={googleSuccess}<br/>
+onFailure={googleFailure}<br/>
+cookiePolicy="single_host_origin"<br/>
+/><br/>
+we need to find out what is google id<br/>
+go to https://console.cloud.google.com/<br/>
+create new project<br/>
+go to credentials<br/>
+create credentials<br/>
+OAuth client ID<br/>
+you get client id and client secret<br/>

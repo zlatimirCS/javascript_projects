@@ -30,7 +30,12 @@ const Auth = () => {
     handleShowPassword();
   };
 
-  const handleSubmit = () => {};
+  const googleSuccess = (res) => {
+    console.log('res', res);
+  };
+  const googleFailure = () => { console.log("Google Sign In was unsuccessful. Try again later") };
+
+  const handleSubmit = () => { console.log('handle submit') };
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -81,9 +86,9 @@ const Auth = () => {
               />
             )}
           </Grid>
-          {/* <GoogleLogin
-            clientId="GOOGLE ID"
-            render={(renderProps) => {
+          <GoogleLogin
+            clientId="196717044969-fdjvkqfbgrlg3bn8s1k3ejar0q3su67q.apps.googleusercontent.com"
+            render={renderProps => (
               <Button
                 className={classes.googleButton}
                 color="primary"
@@ -93,9 +98,12 @@ const Auth = () => {
                 variant="contained"
               >
                 Google Sign In
-              </Button>;
-            }}
-          /> */}
+              </Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy="single_host_origin"
+          />
           <Button
             type="submit"
             fullWidth
