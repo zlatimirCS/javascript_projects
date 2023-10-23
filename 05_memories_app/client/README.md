@@ -235,3 +235,12 @@ go to credentials<br/>
 create credentials<br/>
 OAuth client ID<br/>
 you get client id and client secret<br/>
+
+after we done with google signin, we will create manual signin and singup<br/>
+we create forms for both signin and signup with switchmode state to toogle between<br/>
+we need to add app.use('/users', userRoutes) in index.js of the server<br/>
+then in routes folder we create users.js<br/>
+in routes we create signin and signup routes with imported controllers<br/>
+we create Model for user in models folder<br/>
+inside users controllers we import bcryptjs to hash password<br/>
+we create signin and signup controllers<br/>
