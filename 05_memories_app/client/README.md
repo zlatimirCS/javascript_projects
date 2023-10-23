@@ -244,3 +244,10 @@ in routes we create signin and signup routes with imported controllers<br/>
 we create Model for user in models folder<br/>
 inside users controllers we import bcryptjs to hash password<br/>
 we create signin and signup controllers<br/>
+
+now we need to create auth middleware to protect routes<br/>
+we create middleware folder in server folder<br/>
+we create auth middleware with next()<br/>
+for example if user want to like the post we need to check if user is authenticated<br/>
+we need to add auth middleware to like route in posts.js<br/>
+if user is authenticated we can proceed with next() to actual like controller<br/>
