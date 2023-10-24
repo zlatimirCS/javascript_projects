@@ -40,7 +40,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
         className={classes.overlay}
         style={{ backgroundColor: theme.palette.tertiary.main }}
       >
-        <Typography variant="h6">{post.creator}</Typography>
+        <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
