@@ -81,7 +81,7 @@ const Auth = () => {
                   type="text"
                 />
                 <Input
-                  name="firstName"
+                  name="lastName"
                   label="Last Name"
                   handleChange={handleChange}
                   half
