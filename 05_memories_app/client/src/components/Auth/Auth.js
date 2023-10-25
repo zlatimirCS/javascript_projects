@@ -10,8 +10,8 @@ import {
 import useStyles from "./styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
-import { GoogleLogin } from "react-google-login";
-import { AUTH } from "../../constants/actionTypes";
+// import { GoogleLogin } from "react-google-login";
+// import { AUTH } from "../../constants/actionTypes";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signin, signup } from "../../actions/auth";
@@ -35,18 +35,18 @@ const Auth = () => {
     setShowPassword(false);
   };
 
-  const googleSuccess = async (res) => {
-    console.log('res', res);
-    const result = res?.profileObj;
-    const token = res?.tokenId;
-    try {
-      dispatch({ type: AUTH, data: { result, token } });
-      history.push('/');
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const googleFailure = (error) => { console.log("Google Sign In was unsuccessful. Try again later", error) };
+  // const googleSuccess = async (res) => {
+  //   console.log('res', res);
+  //   const result = res?.profileObj;
+  //   const token = res?.tokenId;
+  //   try {
+  //     dispatch({ type: AUTH, data: { result, token } });
+  //     history.push('/');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // const googleFailure = (error) => { console.log("Google Sign In was unsuccessful. Try again later", error) };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

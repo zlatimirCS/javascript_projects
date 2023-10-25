@@ -79,7 +79,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
         >
           <ThumbUpAltIcon fontSize="small" />
           Like&nbsp;
-          {post.likeCount}
+          {post.likes.length ? post.likes.length : '0'}
         </Button>
         <Button
           size="small"

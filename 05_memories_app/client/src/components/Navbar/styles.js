@@ -35,7 +35,7 @@ export default makeStyles((theme) => ({
   profile: {
     display: "flex",
     justifyContent: "space-between",
-    width: "400px",
+    // width: "400px",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
@@ -50,6 +50,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     textAlign: "center",
+    marginLeft: "5px",
   },
   brandContainer: {
     display: "flex",
