@@ -21,6 +21,35 @@ const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const theme = useTheme();
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const Likes = () => {
+    if (post.likes.length > 0) {
+      return post.likes.find(
+        (like) => like === user?.result?._id
+      ) ? (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;
+          {post.likes.length > 2
+            ? `You and ${post.likes.length - 1} others`
+            : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
+        </>
+      ) : (
+        <>
+          <ThumbUpAltIcon fontSize="small" />
+          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpAltIcon fontSize="small" />
+        &nbsp;Like
+      </>
+    );
+  };
   return (
     <Card className={classes.card}>
       {post.selectedFile ? (
@@ -45,17 +74,18 @@ const Post = ({ post, currentId, setCurrentId }) => {
           {moment(post.createdAt).fromNow()}
         </Typography>
       </div>
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="small"
-          onClick={() => {
-            setCurrentId(post._id);
-          }}
-        >
-          <MoreHorizIcon fontSize="medium" />
-        </Button>
-      </div>
+      {user?.result?._id === post?.creator &&
+        <div className={classes.overlay2}>
+          <Button
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => {
+              setCurrentId(post._id);
+            }}
+          >
+            <MoreHorizIcon fontSize="medium" />
+          </Button>
+        </div>}
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
           {post.tags.map((tag) => `#${tag} `)}
@@ -76,21 +106,21 @@ const Post = ({ post, currentId, setCurrentId }) => {
           onClick={() => {
             dispatch(likePost(post._id));
           }}
+          disabled={!user?.result}
         >
-          <ThumbUpAltIcon fontSize="small" />
-          Like&nbsp;
-          {post.likes.length ? post.likes.length : '0'}
+          <Likes />
         </Button>
-        <Button
-          size="small"
-          onClick={() => {
-            dispatch(deletePost(post._id));
-          }}
-          style={{ color: theme.palette.tertiary.main }}
-        >
-          <DeleteIcon fontSize="small" />
-          Delete
-        </Button>
+        {user?.result?._id === post?.creator &&
+          <Button
+            size="small"
+            onClick={() => {
+              dispatch(deletePost(post._id));
+            }}
+            style={{ color: theme.palette.tertiary.main }}
+          >
+            <DeleteIcon fontSize="small" />
+            Delete
+          </Button>}
       </CardActions>
     </Card>
   );
