@@ -251,3 +251,5 @@ we create auth middleware with next()<br/>
 for example if user want to like the post we need to check if user is authenticated<br/>
 we need to add auth middleware to like route in posts.js<br/>
 if user is authenticated we can proceed with next() to actual like controller<br/>
+
+adding routes to app.js<br />
