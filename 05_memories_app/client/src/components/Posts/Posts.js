@@ -6,12 +6,16 @@ import { Grid, CircularProgress } from "@material-ui/core";
 
 const Posts = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
-  const { posts } = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector((state) => state.posts);
+
+  console.log('isLoading', isLoading);
 
   const sortedPosts = posts?.sort((a, b) =>
     a.createdAt < b.createdAt ? 1 : -1
   );
-  return !posts?.length ? (
+  if (!posts.length && !isLoading) return "No posts";
+
+  return isLoading ? (
     <CircularProgress />
   ) : (
     <Grid
