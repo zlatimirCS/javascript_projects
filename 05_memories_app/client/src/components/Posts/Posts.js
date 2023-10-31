@@ -6,12 +6,12 @@ import { Grid, CircularProgress } from "@material-ui/core";
 
 const Posts = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
-  const posts = useSelector((state) => state.posts);
+  const { posts } = useSelector((state) => state.posts);
 
-  const sortedPosts = posts.sort((a, b) =>
+  const sortedPosts = posts?.sort((a, b) =>
     a.createdAt < b.createdAt ? 1 : -1
   );
-  return !posts.length ? (
+  return !posts?.length ? (
     <CircularProgress />
   ) : (
     <Grid
@@ -21,7 +21,7 @@ const Posts = ({ currentId, setCurrentId }) => {
       spacing={3}
     >
       {sortedPosts.map((post) => (
-        <Grid key={post._id} item xs={12} sm={6}>
+        <Grid key={post._id} item xs={12} sm={6} md={6} lg={3}>
           <Post post={post} currentId={currentId} setCurrentId={setCurrentId} />
         </Grid>
       ))}
