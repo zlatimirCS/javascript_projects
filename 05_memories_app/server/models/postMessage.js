@@ -15,6 +15,10 @@ const postSchema = mongoose.Schema({
     type: Date,
     default: Date.now, // This will automatically create a timestamp
   },
+  comments: {
+    type: [String],
+    default: [],
+  },
 });
 
 const PostMessage = mongoose.model("PostMessage", postSchema);

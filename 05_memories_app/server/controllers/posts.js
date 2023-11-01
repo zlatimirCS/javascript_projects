@@ -44,7 +44,6 @@ export const getPostsBySearch = async (req, res) => {
 };
 
 export const createPost = async (req, res) => {
-  console.log('ovde nece moci dalje');
   const post = req.body;
   const newPost = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
   try {
@@ -93,6 +92,19 @@ export const likePost = async (req, res) => {
   } else {
     post.likes = post.likes.filter((id) => id !== String(req.userId));
   }
+  const updatedPost = await PostMessage.findByIdAndUpdate(
+    id,
+    post,
+    { new: true }
+  );
+  res.json(updatedPost);
+};
+
+export const commentPost = async (req, res) => {
+  const { id } = req.params; // This is the id of the post we want to comment
+  const { comment } = req.body;
+  const post = await PostMessage.findById(id);
+  post.comments.push(comment);
   const updatedPost = await PostMessage.findByIdAndUpdate(
     id,
     post,

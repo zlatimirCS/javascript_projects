@@ -7,7 +7,8 @@ import {
   FETCH_BY_SEARCH,
   START_LOADING,
   END_LOADING,
-  FETCH_POST
+  FETCH_POST,
+  COMMENT,
 } from "../constants/actionTypes";
 import * as api from "../api";
 
@@ -16,7 +17,6 @@ export const getPosts = (page) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
     const { data } = await api.fetchPosts(page);
-    console.log('data', data);
     dispatch({ type: FETCH_ALL, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {
@@ -27,9 +27,7 @@ export const getPosts = (page) => async (dispatch) => {
 export const getPost = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    console.log('id', id);
     const { data } = await api.fetchPost(id);
-    console.log('data', data);
     dispatch({ type: FETCH_POST, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {
@@ -42,7 +40,6 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
     dispatch({ type: START_LOADING });
     const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
     dispatch({ type: FETCH_BY_SEARCH, payload: data });
-    console.log('data', data);
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
@@ -84,6 +81,17 @@ export const likePost = (id) => async (dispatch) => {
     // We don't need the response data, so we don't need to destructure it
     const { data } = await api.likePost(id);
     dispatch({ type: LIKE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const commentPost = (comment, postId) => async (dispatch) => {
+  try {
+    // We don't need the response data, so we don't need to destructure it
+    const { data } = await api.comment(comment, postId);
+    dispatch({ type: COMMENT, payload: data });
+    return data.comments;
   } catch (error) {
     console.log(error.message);
   }

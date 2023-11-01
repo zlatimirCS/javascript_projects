@@ -8,8 +8,6 @@ const Posts = ({ currentId, setCurrentId }) => {
   const classes = useStyles();
   const { posts, isLoading } = useSelector((state) => state.posts);
 
-  console.log('isLoading', isLoading);
-
   const sortedPosts = posts?.sort((a, b) =>
     a.createdAt < b.createdAt ? 1 : -1
   );
