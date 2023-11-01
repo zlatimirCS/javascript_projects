@@ -31,7 +31,7 @@ const Form = ({ currentId, setCurrentId }) => {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
 
     } else {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      dispatch(createPost({ ...postData, name: user?.result?.name }, history));
       // history.push("/");
     }
     clear();

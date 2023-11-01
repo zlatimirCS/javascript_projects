@@ -85,9 +85,10 @@ const Post = ({ post, currentId, setCurrentId }) => {
         {user?.result?._id === post?.creator &&
           <div className={classes.overlay2}>
             <Button
-              style={{ color: "white" }}
+              style={{ color: "white", zIndex: "9" }}
               size="small"
-              onClick={() => {
+              onClick={(event) => {
+                event.stopPropagation();
                 setCurrentId(post._id);
               }}
             >
