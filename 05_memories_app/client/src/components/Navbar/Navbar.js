@@ -13,6 +13,12 @@ const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
 
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+    history.push('/');
+    setUser(null);
+  };
+
   useEffect(() => {
     const token = user?.token;
     // check if token have expired
@@ -23,12 +29,6 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem('profile')));
 
   }, [location]); // [2]
-
-  const logout = () => {
-    dispatch({ type: 'LOGOUT' });
-    history.push('/');
-    setUser(null);
-  };
 
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">

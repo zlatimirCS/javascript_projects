@@ -53,6 +53,7 @@ export const createPost = (post, history) => async (dispatch) => {
     history.push(`/posts/${data._id}`);
     dispatch({ type: CREATE, payload: data });
     dispatch({ type: END_LOADING });
+    return data;
   } catch (error) {
     console.log(error.message);
   }

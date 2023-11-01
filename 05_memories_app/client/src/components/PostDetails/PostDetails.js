@@ -16,13 +16,13 @@ const PostDetails = () => {
 
   useEffect(() => {
     dispatch(getPost(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     if (post) {
       dispatch(getPostsBySearch({ search: '', tags: post?.tags.join(',') }));
     }
-  }, [post]);
+  }, [post, dispatch]);
 
   const recommendedPosts = posts.filter(({ _id }) => _id !== post?._id);
 
@@ -49,7 +49,7 @@ const PostDetails = () => {
           <Divider style={{ margin: '20px 0' }} />
         </div>
         <div className={classes.imageSection}>
-          <img className={classes.media} src={post?.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post?.title} />
+          <img className={classes.media} src={post?.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt='post details' />
         </div>
       </div>
       {recommendedPosts && recommendedPosts.length && (
@@ -64,7 +64,7 @@ const PostDetails = () => {
                   <Typography gutterBottom variant="subtitle2">{name}</Typography>
                   <Typography gutterBottom variant="subtitle2">{message}</Typography>
                   <Typography gutterBottom variant="subtitle1">Likes: {likes.length}</Typography>
-                  <img src={selectedFile} width="200px" />
+                  <img src={selectedFile} width="200px" alt="commented portrait" />
                 </div>
               )
             })}
