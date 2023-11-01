@@ -52,5 +52,6 @@ export default makeStyles((theme) => ({
   cardAction: {
     display: 'block',
     textAlign: 'initial',
+    cursor: 'pointer',
   },
 }));

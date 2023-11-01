@@ -59,7 +59,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
   };
   return (
     <Card className={classes.card}>
-      <ButtonBase className={classes.cardAction} onClick={openPost}>
+      <div className={classes.cardAction} onClick={openPost}>
         {post.selectedFile ? (
           <CardMedia
             className={classes.media}
@@ -107,7 +107,7 @@ const Post = ({ post, currentId, setCurrentId }) => {
             {post.message}
           </Typography>
         </CardContent>
-      </ButtonBase>
+      </div>
       <CardActions className={classes.cardActions}>
         <Button
           size="small"
