@@ -37,6 +37,22 @@ const Footer = () => {
             title={footerLinks[0].title}
             links={footerLinks[0].links}
           />
+          <FooterColumn
+            title={footerLinks[1].title}
+            links={footerLinks[1].links}
+          />
+          <FooterColumn
+            title={footerLinks[2].title}
+            links={footerLinks[2].links}
+          />
+          <FooterColumn
+            title={footerLinks[3].title}
+            links={footerLinks[3].links}
+          />
+          <FooterColumn
+            title={footerLinks[4].title}
+            links={footerLinks[4].links}
+          />
         </div>
       </div>
     </footer>
