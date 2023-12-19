@@ -36,7 +36,7 @@ const Project = g
 
 const jwt = auth.JWT({
   issuer: "grafbase",
-  secret: process.env.JWT_SECRET as string,
+  secret: "secret",
 });
 
 export default config({
