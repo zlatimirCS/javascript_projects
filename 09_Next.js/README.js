@@ -50,7 +50,9 @@ export async function getServerSideProps(context) {
     },
   };
 }
-We can use this snippet
+—----------------------------------------------------------------------
+
+  We can use this snippet
 if (!brandById) {
   return {
     redirect: {
